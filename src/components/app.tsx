@@ -1,9 +1,9 @@
 import React from "react";
-import "./App.css";
+import styles from "./app.module.less";
 import { useSelector } from "react-redux";
-import { RootState } from "./reducer/pixel";
+import { RootState } from "../reducer/pixel";
 
 export function App() {
   const color = useSelector((state: RootState) => state.colors);
-  return <div className="App">ededed</div>;
+  return <div className={styles.root}>ededed</div>;
 }
