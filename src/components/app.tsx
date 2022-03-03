@@ -1,9 +1,14 @@
 import React from "react";
-import styles from "./app.module.less";
+import styles from "./app.module.css";
 import { useSelector } from "react-redux";
-import { RootState } from "../reducer/pixel";
+import { PixelRootState } from "../reducer/pixel";
+import { ActionBar } from "./action-bar";
 
 export function App() {
-  const color = useSelector((state: RootState) => state.colors);
-  return <div className={styles.root}>ededed</div>;
+  const color = useSelector((state: PixelRootState) => state.colors);
+  return (
+    <div className={styles.root}>
+      <ActionBar />
+    </div>
+  );
 }

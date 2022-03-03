@@ -1,6 +1,6 @@
 import { ADD_COLOR, PixelsAction } from "../actions/pixels";
 
-export interface RootState {
+export interface PixelRootState {
   colors: string[];
 }
 
@@ -8,18 +8,17 @@ const defaultState = {
   colors: ["test"],
 };
 
-const pixelsReducers = (
-  state: RootState = defaultState,
+const pixel = (
+  state: PixelRootState = defaultState,
   action: PixelsAction
-): RootState => {
+): PixelRootState => {
   switch (action.type) {
     case ADD_COLOR: {
-      return { ...state };
+      return { ...state, colors: [...state.colors, action.payload.hexcode] };
     }
-
     default:
       return state;
   }
 };
 
-export default pixelsReducers;
+export default pixel;
