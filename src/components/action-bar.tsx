@@ -1,23 +1,27 @@
 import React from "react";
 import { connect, useDispatch } from "react-redux";
-import { addColor } from "../actions/pixels";
+import { addColor, setTool } from "../actions/pixels";
 import { StateType } from "../app/store";
 import styles from "./action-bar.module.css";
 
-interface Props {
-  colors: string[];
+interface Props {}
+
+export const ActionBar = connect((state: StateType) => ({}))(
+  ActionBarComponent
+);
+
+export enum Tool {
+  PENCIL,
+  BUCKET,
 }
 
-export const ActionBar = connect((state: StateType) => ({
-  colors: state.pixel.colors,
-}))(ActionBarComponent);
-
-function ActionBarComponent({ colors }: Props) {
+function ActionBarComponent({}: Props) {
   const dispatch = useDispatch();
 
   return (
-    <div className={styles.root} onClick={() => dispatch(addColor("hheeyy"))}>
-      {colors.map((c) => c)}
+    <div className={styles.root}>
+      <button onClick={() => dispatch(setTool(Tool.PENCIL))}>Pencil</button>
+      <button onClick={() => dispatch(setTool(Tool.BUCKET))}>Bucket</button>
     </div>
   );
 }

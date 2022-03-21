@@ -1,3 +1,5 @@
+import { Tool } from "../components/action-bar";
+
 export const ADD_COLOR: "ADD_COLOR" = "ADD_COLOR";
 export const addColor = (hexcode: string) => ({
   type: ADD_COLOR,
@@ -5,4 +7,11 @@ export const addColor = (hexcode: string) => ({
 });
 export type AddColorAction = ReturnType<typeof addColor>;
 
-export type PixelsAction = AddColorAction;
+export const SET_TOOL: "SET_TOOL" = "SET_TOOL";
+export const setTool = (tool: Tool) => ({
+  type: SET_TOOL,
+  payload: { tool },
+});
+export type SetToolAction = ReturnType<typeof setTool>;
+
+export type PixelsAction = AddColorAction | SetToolAction;
