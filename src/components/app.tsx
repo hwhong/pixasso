@@ -104,7 +104,7 @@ export function App() {
             setIsMouseDown(true);
           }}
           onMouseMove={(e) => {
-            if (isMouseDown) {
+            if (isMouseDown && tool === Tool.PENCIL) {
               const canvas = canvasRef.current;
               const [row, col] = (e.target as any).textContent.split("-");
               if (canvas?.getContext) {
@@ -116,6 +116,7 @@ export function App() {
               }
               grid[row][col] = { index: `${row}-${col}`, filled: true };
               setGrid(grid);
+              console.log("where");
             }
           }}
           onMouseUp={() => {
@@ -147,7 +148,7 @@ export function App() {
                         row,
                         initVisited()
                       );
-                      console.log(areas);
+
                       areas.forEach((a) => {
                         const [row, col] = a.split("-");
                         const ctx = canvas.getContext("2d")!;
