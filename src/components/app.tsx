@@ -90,6 +90,7 @@ export function App() {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     }
+    console.log(tool);
   }, [canvasRef]);
 
   return (
@@ -138,6 +139,7 @@ export function App() {
                       grid[row][col] = { index: `${row}-${col}`, filled: true };
                       console.log("there");
                     } else {
+                      console.log("here");
                       // x, y => col, row
                       const areas = calculateArea(
                         grid,
