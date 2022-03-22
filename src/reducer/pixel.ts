@@ -1,14 +1,21 @@
-import { ADD_COLOR, PixelsAction, SET_TOOL } from "../actions/pixels";
+import {
+  ADD_COLOR,
+  PixelsAction,
+  SET_COLOR,
+  SET_TOOL,
+} from "../actions/pixels";
 import { Tool } from "../components/action-bar";
 
 export interface PixelRootState {
   colors: string[];
-  currentTool: Tool;
+  tool: Tool;
+  color: string;
 }
 
 const defaultState = {
   colors: ["test"],
-  currentTool: Tool.PENCIL,
+  tool: Tool.PENCIL,
+  color: "#000000",
 };
 
 const pixel = (
@@ -20,7 +27,10 @@ const pixel = (
       return { ...state, colors: [...state.colors, action.payload.hexcode] };
     }
     case SET_TOOL: {
-      return { ...state, currentTool: action.payload.tool };
+      return { ...state, tool: action.payload.tool };
+    }
+    case SET_COLOR: {
+      return { ...state, color: action.payload.color };
     }
     default:
       return state;

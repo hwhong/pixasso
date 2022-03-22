@@ -14,4 +14,11 @@ export const setTool = (tool: Tool) => ({
 });
 export type SetToolAction = ReturnType<typeof setTool>;
 
-export type PixelsAction = AddColorAction | SetToolAction;
+export const SET_COLOR: "SET_COLOR" = "SET_COLOR";
+export const setColor = (color: string) => ({
+  type: SET_COLOR,
+  payload: { color },
+});
+export type SetColorAction = ReturnType<typeof setColor>;
+
+export type PixelsAction = AddColorAction | SetToolAction | SetColorAction;
