@@ -12,6 +12,14 @@ import {
 } from "../helper/helper";
 import classNames from "classnames";
 
+// TODO
+// - bucket needs to override and not just limit to empty spaces
+// - change pixel sizes
+// - able to change color
+
+// NICE TO HAVE
+// - multiselect by dragging
+
 export function Grid() {
   const tool = useSelector((state: StateType) => state.pixel.tool);
   const color = useSelector((state: StateType) => state.pixel.color);

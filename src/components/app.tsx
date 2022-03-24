@@ -7,7 +7,6 @@ export function App() {
   return (
     <div className={styles.root}>
       <ActionBar />
-
       <Grid />
     </div>
   );
