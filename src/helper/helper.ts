@@ -1,13 +1,13 @@
-import { MetaLayer } from "../type/type";
+import { GridItemData } from "../type/type";
 
 export const DIVIDER = "/";
 
-export function initGrid(): MetaLayer[][] {
-  const grid: MetaLayer[][] = [];
+export function initGrid(): GridItemData[][] {
+  const grid: GridItemData[][] = [];
   Array.from(Array(10).keys()).forEach((row) => {
-    let arr: MetaLayer[] = [];
+    let arr: GridItemData[] = [];
     Array.from(Array(10).keys()).forEach((col) => {
-      arr.push({ index: `${row}${DIVIDER}${col}`, filled: false });
+      arr.push({ index: `${row}${DIVIDER}${col}`, color: undefined });
     });
     grid.push(arr);
   });
@@ -27,10 +27,11 @@ export function initVisited(): boolean[][] {
 }
 
 export function calculateArea(
-  grid: MetaLayer[][],
+  grid: GridItemData[][],
   col: number,
   row: number,
-  visisted: boolean[][]
+  visisted: boolean[][],
+  overrideColor: string | undefined
 ): string[] {
   let unfilledArea: string[] = [];
 
@@ -39,7 +40,8 @@ export function calculateArea(
     row < 0 ||
     col > grid.length - 1 ||
     row > grid.length - 1 ||
-    grid[row][col].filled ||
+    (grid[row][col].color === undefined && overrideColor !== undefined) ||
+    grid[row][col].color !== overrideColor ||
     visisted[row][col]
   ) {
     return unfilledArea;
@@ -47,13 +49,13 @@ export function calculateArea(
 
   visisted[row][col] = true;
 
-  const area1 = calculateArea(grid, col + 1, row, visisted);
-  const area2 = calculateArea(grid, col - 1, row, visisted);
-  const area3 = calculateArea(grid, col, row + 1, visisted);
-  const area4 = calculateArea(grid, col, row - 1, visisted);
+  const area1 = calculateArea(grid, col + 1, row, visisted, overrideColor);
+  const area2 = calculateArea(grid, col - 1, row, visisted, overrideColor);
+  const area3 = calculateArea(grid, col, row + 1, visisted, overrideColor);
+  const area4 = calculateArea(grid, col, row - 1, visisted, overrideColor);
 
   let current: string[] = [];
-  if (!grid[row][col].filled) {
+  if (grid[row][col].color === overrideColor) {
     current = [grid[row][col].index];
   }
 

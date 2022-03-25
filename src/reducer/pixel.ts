@@ -9,7 +9,7 @@ import { Tool } from "../components/action-bar";
 export interface PixelRootState {
   colors: string[];
   tool: Tool;
-  color: string;
+  color: string | undefined;
 }
 
 const defaultState = {

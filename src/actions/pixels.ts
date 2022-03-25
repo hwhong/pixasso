@@ -15,7 +15,7 @@ export const setTool = (tool: Tool) => ({
 export type SetToolAction = ReturnType<typeof setTool>;
 
 export const SET_COLOR: "SET_COLOR" = "SET_COLOR";
-export const setColor = (color: string) => ({
+export const setColor = (color: string | undefined) => ({
   type: SET_COLOR,
   payload: { color },
 });

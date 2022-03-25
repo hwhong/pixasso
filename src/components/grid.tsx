@@ -3,7 +3,7 @@ import styles from "./grid.module.css";
 import { useSelector } from "react-redux";
 import { Tool } from "./action-bar";
 import { StateType } from "../app/store";
-import { MetaLayer } from "../type/type";
+import { GridItemData } from "../type/type";
 import {
   calculateArea,
   DIVIDER,
@@ -25,7 +25,7 @@ export function Grid() {
   const color = useSelector((state: StateType) => state.pixel.color);
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const [isMouseDown, setIsMouseDown] = React.useState<boolean>(false);
-  const [grid, setGrid] = React.useState<MetaLayer[][]>(initGrid());
+  const [grid, setGrid] = React.useState<GridItemData[][]>(initGrid());
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
@@ -42,12 +42,15 @@ export function Grid() {
 
   const draw = (row: number, col: number) => {
     const canvas = canvasRef.current;
-    if (canvas) {
-      const ctx = canvas.getContext("2d")!;
+    const ctx = canvas?.getContext("2d")!;
+
+    if (canvas && color) {
       ctx.beginPath();
       ctx.fillStyle = color;
       ctx.fillRect(col * 50, row * 50, 50, 50);
       ctx.stroke();
+    } else {
+      ctx.clearRect(col * 50, row * 50, 50, 50);
     }
   };
 
@@ -58,12 +61,12 @@ export function Grid() {
       draw(row, col);
 
       // default is when tool is pencil, in which case we always fill
-      let filled = true;
+      let gridItemColor: GridItemData["color"] = color;
       if (tool === Tool.ERASER) {
-        filled = false;
+        gridItemColor = undefined;
       }
 
-      grid[row][col] = { ...grid[row][col], filled };
+      grid[row][col] = { ...grid[row][col], color: gridItemColor };
       setGrid(grid);
     }
   };
@@ -72,25 +75,31 @@ export function Grid() {
     if (tool === Tool.PENCIL || tool === Tool.ERASER) {
       draw(row, col);
 
-      let filled = true;
+      let gridItemColor: GridItemData["color"] = color;
       if (tool === Tool.ERASER) {
-        filled = false;
+        gridItemColor = undefined;
       }
 
       grid[row][col] = {
         ...grid[row][col],
-        filled,
+        color: gridItemColor,
       };
     } else {
       // x, y => col, row
-      const areas = calculateArea(grid, col, row, initVisited());
+      const areas = calculateArea(
+        grid,
+        col,
+        row,
+        initVisited(),
+        grid[col][row].color
+      );
       areas.forEach((a) => {
         const [row, col] = a.split(DIVIDER).map((s) => parseInt(s));
         draw(row, col);
 
         grid[row][col] = {
           ...grid[row][col],
-          filled: true,
+          color,
         };
       });
     }
@@ -112,9 +121,7 @@ export function Grid() {
           Array.from(Array(10).keys()).map((col) => (
             <div
               key={`${row}${DIVIDER}${col}`}
-              className={classNames(styles.gridItem, {
-                [styles.overrideHover]: grid[row][col].filled,
-              })}
+              className={classNames(styles.gridItem)}
               onClick={() => onClick(row, col)}
             >{`${row}${DIVIDER}${col}`}</div>
           ))

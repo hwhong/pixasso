@@ -42,7 +42,7 @@ function ActionBarComponent({}: Props) {
       <button
         onClick={() => {
           dispatch(setTool(Tool.ERASER));
-          dispatch(setColor("#FFFFFF"));
+          dispatch(setColor(undefined));
         }}
       >
         Eraser

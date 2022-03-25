@@ -1,4 +1,4 @@
-export interface MetaLayer {
+export interface GridItemData {
   index: string;
-  filled: boolean;
+  color: string | undefined;
 }
