@@ -44,12 +44,14 @@ export function calculateArea(
   ) {
     return unfilledArea;
   }
+
   visisted[row][col] = true;
 
   const area1 = calculateArea(grid, col + 1, row, visisted);
   const area2 = calculateArea(grid, col - 1, row, visisted);
   const area3 = calculateArea(grid, col, row + 1, visisted);
   const area4 = calculateArea(grid, col, row - 1, visisted);
+
   let current: string[] = [];
   if (!grid[row][col].filled) {
     current = [grid[row][col].index];

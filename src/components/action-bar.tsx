@@ -3,6 +3,8 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { addColor, setColor, setTool } from "../actions/pixels";
 import { StateType } from "../app/store";
 import styles from "./action-bar.module.css";
+import { ColorResult, SketchPicker } from "react-color";
+import { ColorPicker } from "./color-picker";
 
 interface Props {}
 
@@ -19,13 +21,13 @@ export enum Tool {
 function ActionBarComponent({}: Props) {
   const dispatch = useDispatch();
   const tool = useSelector((state: StateType) => state.pixel.tool);
+  const color = useSelector((state: StateType) => state.pixel.color);
 
   return (
     <div className={styles.root}>
       <button
         onClick={() => {
           dispatch(setTool(Tool.PENCIL));
-          dispatch(setColor("#000000"));
         }}
       >
         Pencil
@@ -33,7 +35,6 @@ function ActionBarComponent({}: Props) {
       <button
         onClick={() => {
           dispatch(setTool(Tool.BUCKET));
-          dispatch(setColor("#0000ff"));
         }}
       >
         Bucket
@@ -47,6 +48,8 @@ function ActionBarComponent({}: Props) {
         Eraser
       </button>
       <div>{Object.values(Tool)[tool]}</div>
+      <ColorPicker />
+      <div style={{ backgroundColor: color }} className={styles.preview}></div>
     </div>
   );
 }
