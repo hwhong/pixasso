@@ -7,15 +7,14 @@ import { GridItemData } from "../type/type";
 import {
   calculateArea,
   DIVIDER,
-  initGrid,
-  initVisited,
+  initializeGrid,
+  makeVisitedGrid,
 } from "../helper/helper";
 import classNames from "classnames";
 
 // TODO
-// - bucket needs to override and not just limit to empty spaces
 // - change pixel sizes
-// - able to change color
+// 16 x 16,     32 x 32,     64 x 64,     100 x 100,       128 x 128
 
 // NICE TO HAVE
 // - multiselect by dragging
@@ -25,7 +24,7 @@ export function Grid() {
   const color = useSelector((state: StateType) => state.pixel.color);
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const [isMouseDown, setIsMouseDown] = React.useState<boolean>(false);
-  const [grid, setGrid] = React.useState<GridItemData[][]>(initGrid());
+  const [grid, setGrid] = React.useState<GridItemData[][]>(initializeGrid());
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
@@ -90,8 +89,8 @@ export function Grid() {
         grid,
         col,
         row,
-        initVisited(),
-        grid[col][row].color
+        makeVisitedGrid(),
+        grid[row][col].color
       );
       areas.forEach((a) => {
         const [row, col] = a.split(DIVIDER).map((s) => parseInt(s));
@@ -112,7 +111,7 @@ export function Grid() {
   return (
     <div className={styles.parentLayer}>
       <div
-        className={styles.wrapper}
+        className={styles.gridLayer}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}

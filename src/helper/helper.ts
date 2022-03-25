@@ -2,7 +2,7 @@ import { GridItemData } from "../type/type";
 
 export const DIVIDER = "/";
 
-export function initGrid(): GridItemData[][] {
+export function initializeGrid(): GridItemData[][] {
   const grid: GridItemData[][] = [];
   Array.from(Array(10).keys()).forEach((row) => {
     let arr: GridItemData[] = [];
@@ -14,7 +14,7 @@ export function initGrid(): GridItemData[][] {
   return grid;
 }
 
-export function initVisited(): boolean[][] {
+export function makeVisitedGrid(): boolean[][] {
   const grid: boolean[][] = [];
   Array.from(Array(10).keys()).forEach((y) => {
     let arr: boolean[] = [];

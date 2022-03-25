@@ -1,19 +1,10 @@
-.canvas {
-  border: 1px solid black;
-  background: white;
-
-  grid-column: 1;
-  grid-row: 1;
-  z-index: -1;
-}
-
 .parentLayer {
   display: grid;
   width: 500px;
   height: 500px;
 }
 
-.wrapper {
+.gridLayer {
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);
@@ -24,16 +15,20 @@
 
 .gridItem {
   background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   user-select: none;
-}
-/* 
-.gridItem:hover {
-  background-color: #d4d4d4;
+  color: transparent;
 }
 
-.overrideHover:hover {
-  opacity: 0;
-} */
+.gridItem:hover {
+  background-color: #d4d4d4;
+  opacity: 0.4;
+}
+
+.canvas {
+  border: 1px solid black;
+  background: white;
+
+  grid-column: 1;
+  grid-row: 1;
+  z-index: -1;
+}
