@@ -21,4 +21,15 @@ export const setColor = (color: string | undefined) => ({
 });
 export type SetColorAction = ReturnType<typeof setColor>;
 
-export type PixelsAction = AddColorAction | SetToolAction | SetColorAction;
+export const SET_DIMENSION: "SET_DIMENSION" = "SET_DIMENSION";
+export const setDimension = (dimension: number) => ({
+  type: SET_DIMENSION,
+  payload: { dimension },
+});
+export type SetDimensionAction = ReturnType<typeof setDimension>;
+
+export type PixelsAction =
+  | AddColorAction
+  | SetToolAction
+  | SetColorAction
+  | SetDimensionAction;

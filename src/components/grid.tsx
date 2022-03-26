@@ -6,6 +6,7 @@ import { StateType } from "../app/store";
 import { GridItemData } from "../type/type";
 import {
   calculateArea,
+  CANVAS_SIZE,
   DIVIDER,
   initializeGrid,
   makeVisitedGrid,
@@ -14,7 +15,7 @@ import classNames from "classnames";
 
 // TODO
 // - change pixel sizes
-// 16 x 16,     32 x 32,     64 x 64,     100 x 100,       128 x 128
+// 16 x 16,     32 x 32,     64 x 64,        128 x 128
 
 // NICE TO HAVE
 // - multiselect by dragging
@@ -22,9 +23,14 @@ import classNames from "classnames";
 export function Grid() {
   const tool = useSelector((state: StateType) => state.pixel.tool);
   const color = useSelector((state: StateType) => state.pixel.color);
+  const size = useSelector((state: StateType) => state.pixel.dimension);
+  const dimension = CANVAS_SIZE / size;
+
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const [isMouseDown, setIsMouseDown] = React.useState<boolean>(false);
-  const [grid, setGrid] = React.useState<GridItemData[][]>(initializeGrid());
+  const [grid, setGrid] = React.useState<GridItemData[][]>(
+    initializeGrid(dimension)
+  );
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
@@ -46,10 +52,10 @@ export function Grid() {
     if (canvas && color) {
       ctx.beginPath();
       ctx.fillStyle = color;
-      ctx.fillRect(col * 50, row * 50, 50, 50);
+      ctx.fillRect(col * size, row * size, size, size);
       ctx.stroke();
     } else {
-      ctx.clearRect(col * 50, row * 50, 50, 50);
+      ctx.clearRect(col * size, row * size, size, size);
     }
   };
 
@@ -89,7 +95,7 @@ export function Grid() {
         grid,
         col,
         row,
-        makeVisitedGrid(),
+        makeVisitedGrid(dimension),
         grid[row][col].color
       );
       areas.forEach((a) => {
@@ -109,15 +115,19 @@ export function Grid() {
   const onMouseUp = () => setIsMouseDown(false);
 
   return (
-    <div className={styles.parentLayer}>
+    <div className={styles.root}>
       <div
         className={styles.gridLayer}
+        onMouseUp={onMouseUp}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
+        style={{
+          gridTemplateColumns: `repeat(${dimension}, ${size}px)`,
+          gridTemplateRows: `repeat(${dimension}, ${size}px)`,
+        }}
       >
-        {Array.from(Array(10).keys()).map((row) =>
-          Array.from(Array(10).keys()).map((col) => (
+        {Array.from(Array(dimension).keys()).map((row) =>
+          Array.from(Array(dimension).keys()).map((col) => (
             <div
               key={`${row}${DIVIDER}${col}`}
               className={classNames(styles.gridItem)}

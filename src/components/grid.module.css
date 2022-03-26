@@ -1,14 +1,11 @@
-.parentLayer {
+.root {
   display: grid;
-  width: 500px;
-  height: 500px;
+  width: 640px;
+  height: 640px;
 }
 
 .gridLayer {
   display: grid;
-  grid-template-columns: repeat(10, 50px);
-  grid-template-rows: repeat(10, 50px);
-
   grid-column: 1;
   grid-row: 1;
 }

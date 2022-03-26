@@ -1,12 +1,13 @@
 import { GridItemData } from "../type/type";
 
 export const DIVIDER = "/";
+export const CANVAS_SIZE = 640;
 
-export function initializeGrid(): GridItemData[][] {
+export function initializeGrid(dimension: number): GridItemData[][] {
   const grid: GridItemData[][] = [];
-  Array.from(Array(10).keys()).forEach((row) => {
+  Array.from(Array(dimension).keys()).forEach((row) => {
     let arr: GridItemData[] = [];
-    Array.from(Array(10).keys()).forEach((col) => {
+    Array.from(Array(dimension).keys()).forEach((col) => {
       arr.push({ index: `${row}${DIVIDER}${col}`, color: undefined });
     });
     grid.push(arr);
@@ -14,11 +15,11 @@ export function initializeGrid(): GridItemData[][] {
   return grid;
 }
 
-export function makeVisitedGrid(): boolean[][] {
+export function makeVisitedGrid(dimension: number): boolean[][] {
   const grid: boolean[][] = [];
-  Array.from(Array(10).keys()).forEach((y) => {
+  Array.from(Array(dimension).keys()).forEach((y) => {
     let arr: boolean[] = [];
-    Array.from(Array(10).keys()).forEach((x) => {
+    Array.from(Array(dimension).keys()).forEach((x) => {
       arr.push(false);
     });
     grid.push(arr);
