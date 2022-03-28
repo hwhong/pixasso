@@ -2,6 +2,7 @@
   display: grid;
   width: 640px;
   height: 640px;
+  border: 1px solid black;
 }
 
 .gridLayer {
@@ -16,15 +17,17 @@
   color: transparent;
 }
 
+.pattern {
+  background-color: #d4d4d4;
+  opacity: 0.8;
+}
+
 .gridItem:hover {
   background-color: #d4d4d4;
   opacity: 0.4;
 }
 
 .canvas {
-  border: 1px solid black;
-  background: white;
-
   grid-column: 1;
   grid-row: 1;
   z-index: -1;

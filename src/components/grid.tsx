@@ -60,6 +60,7 @@ export function Grid() {
   };
 
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    // probably need to do something here with the event to remove the background color
     const [row, col] = (e.target as any).textContent.split(DIVIDER);
     // !important
     if (isMouseDown && tool !== Tool.BUCKET) {
@@ -130,7 +131,12 @@ export function Grid() {
           Array.from(Array(dimension).keys()).map((col) => (
             <div
               key={`${row}${DIVIDER}${col}`}
-              className={classNames(styles.gridItem)}
+              className={classNames(styles.gridItem, {
+                [styles.pattern]:
+                  grid[row][col].color === undefined &&
+                  ((col % 2 === 1 && row % 2 === 0) ||
+                    (col % 2 === 0 && row % 2 === 1)),
+              })}
               onClick={() => onClick(row, col)}
             >{`${row}${DIVIDER}${col}`}</div>
           ))
