@@ -1,4 +1,4 @@
-import { Tool } from "../components/action-bar";
+import { Tool } from "../components/action-bar/action-bar";
 
 export const ADD_COLOR: "ADD_COLOR" = "ADD_COLOR";
 export const addColor = (hexcode: string) => ({

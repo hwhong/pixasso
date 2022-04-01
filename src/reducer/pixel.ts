@@ -5,7 +5,7 @@ import {
   SET_DIMENSION,
   SET_TOOL,
 } from "../actions/pixels";
-import { Tool } from "../components/action-bar";
+import { Tool } from "../components/action-bar/action-bar";
 
 export interface PixelRootState {
   colors: string[];

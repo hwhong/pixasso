@@ -1,8 +1,8 @@
 import React from "react";
 import { ChromePicker } from "react-color";
 import { useDispatch, useSelector } from "react-redux";
-import { setColor } from "../actions/pixels";
-import { StateType } from "../app/store";
+import { setColor } from "../../actions/pixels";
+import { StateType } from "../../app/store";
 import styles from "./color-picker.module.css";
 
 export function ColorPicker() {
