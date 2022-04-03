@@ -9,14 +9,12 @@
 }
 
 .top {
-  padding: 20px;
-  background-color: aquamarine;
+  padding: 8px 16px;
+  border-bottom:1px solid #e9ecef ;
 }
 
 .logo {
-  padding: 18px;
-  background-color: black;
-  width: 70px;
+  width: 65%;
 }
 
 .placeHolder {
@@ -28,7 +26,7 @@
 .content {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-  grid-auto-rows: 50px;
+  grid-auto-rows: minmax(50px, 1fr);
 }
 
 .color {
@@ -38,6 +36,24 @@
 .selected {
   box-sizing: border-box;
   border: 2px solid black;
+}
+
+.add {
+  display: flex;
+  justify-content: center;
+  border: 1px dashed #d4d4d4;
+  align-items: center;
+  font-size: 38px;
+  content:'';
+}
+
+.add:before {
+  height: 50px;
+  content: '+';
+}
+
+.add:hover {
+  background-color: #e9ecef;
 }
 
 
@@ -50,3 +66,4 @@
 :global(.ant-collapse-header) > * {
   margin-right: 8px;
 }
+
