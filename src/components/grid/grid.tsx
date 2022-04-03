@@ -17,9 +17,6 @@ import classNames from "classnames";
 // - change pixel sizes
 // 16 x 16,     32 x 32,     64 x 64,        128 x 128
 
-// NICE TO HAVE
-// - multiselect by dragging
-
 export function Grid() {
   const tool = useSelector((state: StateType) => state.pixel.tool);
   const color = useSelector((state: StateType) => state.pixel.color);
@@ -131,10 +128,9 @@ export function Grid() {
             <div
               key={`${row}${DIVIDER}${col}`}
               className={classNames(styles.gridItem, {
-                // [styles.pattern]:
-                //   grid[row][col].color === undefined &&
-                //   ((col % 2 === 1 && row % 2 === 0) ||
-                //     (col % 2 === 0 && row % 2 === 1)),
+                [styles.bucketCursor]: tool === Tool.BUCKET,
+                [styles.eraserCursor]: tool === Tool.ERASER,
+                [styles.pencilCursor]: tool === Tool.PENCIL,
               })}
               onClick={() => onClick(row, col)}
             >{`${row}${DIVIDER}${col}`}</div>

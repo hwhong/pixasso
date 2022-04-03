@@ -1,3 +1,4 @@
+
 .root {
   display: grid;
   width: 640px;
@@ -17,11 +18,6 @@
   color: transparent;
 }
 
-.pattern {
-  background-color: #d4d4d4;
-  opacity: 0.8;
-}
-
 .gridItem:hover {
   background-color: #d4d4d4;
   opacity: 0.4;
@@ -32,3 +28,16 @@
   grid-row: 1;
   z-index: -1;
 }
+
+.bucketCursor {
+  cursor: url("../../image/bucket.cur"), auto;
+}
+
+.eraserCursor {
+  cursor: url("../../image/eraser.cur"), auto;
+}
+
+.pencilCursor {
+  cursor: url("../../image/pencil.cur"), auto;
+}
+

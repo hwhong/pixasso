@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setColor } from "../../actions/pixels";
 import classNames from "classnames";
 import { StateType } from "../../app/store";
-import logo from "../../image/logo.svg";
+import pixasso from "../../image/pixasso.svg";
 
 export function Sidebar() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export function Sidebar() {
   return (
     <div className={styles.root}>
       <div className={styles.top}>
-        <img src={logo} className={styles.logo} />
+        <img src={pixasso} className={styles.logo} />
       </div>
       <Collapse
         defaultActiveKey={["1"]}
@@ -26,7 +26,7 @@ export function Sidebar() {
         <Panel header="Color" key="1" showArrow>
           <div className={styles.content}>
             {DEFAULT_COLORS.map((c) => (
-              <div
+              <button
                 key={c}
                 style={{ backgroundColor: c }}
                 onClick={() => dispatch(setColor(c))}
@@ -35,7 +35,7 @@ export function Sidebar() {
                 })}
               />
             ))}
-            <div className={styles.add} />
+            <button className={classNames(styles.add)} />
           </div>
         </Panel>
       </Collapse>
