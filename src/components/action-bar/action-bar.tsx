@@ -66,38 +66,3 @@ function ActionBarComponent({}: Props) {
     </div>
   );
 }
-
-// <div>{Object.values(Tool)[tool]}</div>
-// <ColorPicker />
-// <div style={{ backgroundColor: color }} className={styles.preview}></div>
-
-// <div>{size}</div>
-
-// <button
-// onClick={() => {
-//   dispatch(setDimension(16));
-// }}
-// >
-// 16
-// </button>
-// <button
-// onClick={() => {
-//   dispatch(setDimension(32));
-// }}
-// >
-// 32
-// </button>
-// <button
-// onClick={() => {
-//   dispatch(setDimension(64));
-// }}
-// >
-// 64
-// </button>
-// <button
-// onClick={() => {
-//   dispatch(setDimension(128));
-// }}
-// >
-// 128
-// </button>
