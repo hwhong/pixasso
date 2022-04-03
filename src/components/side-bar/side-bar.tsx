@@ -9,9 +9,8 @@ import { StateType } from "../../app/store";
 import logo from "../../image/logo.svg";
 
 export function Sidebar() {
-  const color = useSelector((state: StateType) => state.pixel.color);
   const dispatch = useDispatch();
-
+  const color = useSelector((state: StateType) => state.pixel.color);
   const { Panel } = Collapse;
 
   return (
