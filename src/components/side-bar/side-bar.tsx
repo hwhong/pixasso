@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./side-bar.module.css";
 import { Collapse } from "antd";
-import { DEFAULT_COLORS } from "../../helper/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { setColor } from "../../actions/pixels";
 import classNames from "classnames";
@@ -12,6 +11,7 @@ import { ColorPicker } from "../color-picker/color-picker";
 export function Sidebar() {
   const dispatch = useDispatch();
   const color = useSelector((state: StateType) => state.pixel.color);
+  const palette = useSelector((state: StateType) => state.pixel.palette);
   const { Panel } = Collapse;
 
   return (
@@ -36,7 +36,7 @@ export function Sidebar() {
           showArrow
         >
           <div className={styles.content}>
-            {DEFAULT_COLORS.map((c) => (
+            {palette.map((c) => (
               <button
                 key={c}
                 style={{ backgroundColor: c }}
