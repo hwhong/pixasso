@@ -28,7 +28,7 @@ export function Sidebar() {
         <Panel
           header={
             <div className={styles.header}>
-              <span>Color</span>
+              <span>Palette</span>
               <ColorPicker />
             </div>
           }
