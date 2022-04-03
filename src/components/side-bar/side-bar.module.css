@@ -10,7 +10,7 @@
 
 .top {
   padding: 8px 16px;
-  border-bottom:1px solid #e9ecef ;
+  border-bottom: 1px solid #e9ecef;
 }
 
 .logo {
@@ -38,7 +38,7 @@
 .color:focus {
   border: 4px solid #bfdbf7;
   border-radius: 0;
-  outline: none;    
+  outline: none;
 }
 
 .selected {
@@ -46,33 +46,20 @@
   border: 4px solid white;
 }
 
-.add {
-  background-color: white;
+.header {
   display: flex;
-  justify-content: center;
-  border: 1px dashed #d4d4d4;
+  justify-content: space-between;
   align-items: center;
-  font-size: 38px;
-  content:'';
-  cursor: pointer;
+  width: 100%;
 }
-
-.add:before {
-  content: '+';
-}
-
-.add:hover {
-  background-color: #e9ecef;
-}
-
 
 :global(.ant-collapse-header) {
   font-weight: bold;
-  padding: 14px 8px;
+  padding: 4px 8px;
   display: flex;
+  align-items: center;
 }
 
 :global(.ant-collapse-header) > * {
   margin-right: 8px;
 }
-

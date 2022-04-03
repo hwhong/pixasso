@@ -12,13 +12,23 @@ export function ColorPicker() {
 
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>Pick Color</button>
+      <button
+        className={styles.add}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(true);
+        }}
+      />
       {isOpen ? (
         <div className={styles.popover}>
           <div className={styles.cover} onClick={() => setIsOpen(false)} />
           <ChromePicker
             color={currentColor}
-            onChangeComplete={({ hex }) => dispatch(setColor(hex))}
+            onChangeComplete={({ hex }, e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              dispatch(setColor(hex));
+            }}
           />
         </div>
       ) : null}
