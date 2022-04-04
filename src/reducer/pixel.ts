@@ -5,17 +5,18 @@ import {
   SET_DIMENSION,
   SET_TOOL,
 } from "../actions/pixels";
-import { Tool } from "../components/action-bar";
+import { Tool } from "../components/action-bar/action-bar";
+import { DEFAULT_COLORS } from "../helper/colors";
 
 export interface PixelRootState {
-  colors: string[];
+  palette: string[];
   tool: Tool;
   color: string | undefined;
   dimension: number;
 }
 
 const defaultState = {
-  colors: ["test"],
+  palette: [...DEFAULT_COLORS],
   tool: Tool.PENCIL,
   color: "#000000",
   dimension: 16,
@@ -27,7 +28,7 @@ const pixel = (
 ): PixelRootState => {
   switch (action.type) {
     case ADD_COLOR: {
-      return { ...state, colors: [...state.colors, action.payload.hexcode] };
+      return { ...state, palette: [...state.palette, action.payload.hexcode] };
     }
     case SET_TOOL: {
       return { ...state, tool: action.payload.tool };

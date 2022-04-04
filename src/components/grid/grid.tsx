@@ -1,24 +1,21 @@
 import React from "react";
 import styles from "./grid.module.css";
 import { useSelector } from "react-redux";
-import { Tool } from "./action-bar";
-import { StateType } from "../app/store";
-import { GridItemData } from "../type/type";
+import { Tool } from "../action-bar/action-bar";
+import { StateType } from "../../app/store";
+import { GridItemData } from "../../type/type";
 import {
   calculateArea,
   CANVAS_SIZE,
   DIVIDER,
   initializeGrid,
   makeVisitedGrid,
-} from "../helper/helper";
+} from "../../helper/helper";
 import classNames from "classnames";
 
 // TODO
 // - change pixel sizes
 // 16 x 16,     32 x 32,     64 x 64,        128 x 128
-
-// NICE TO HAVE
-// - multiselect by dragging
 
 export function Grid() {
   const tool = useSelector((state: StateType) => state.pixel.tool);
@@ -60,7 +57,6 @@ export function Grid() {
   };
 
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    // probably need to do something here with the event to remove the background color
     const [row, col] = (e.target as any).textContent.split(DIVIDER);
     // !important
     if (isMouseDown && tool !== Tool.BUCKET) {
@@ -132,10 +128,9 @@ export function Grid() {
             <div
               key={`${row}${DIVIDER}${col}`}
               className={classNames(styles.gridItem, {
-                [styles.pattern]:
-                  grid[row][col].color === undefined &&
-                  ((col % 2 === 1 && row % 2 === 0) ||
-                    (col % 2 === 0 && row % 2 === 1)),
+                [styles.bucketCursor]: tool === Tool.BUCKET,
+                [styles.eraserCursor]: tool === Tool.ERASER,
+                [styles.pencilCursor]: tool === Tool.PENCIL,
               })}
               onClick={() => onClick(row, col)}
             >{`${row}${DIVIDER}${col}`}</div>
