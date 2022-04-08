@@ -1,3 +1,17 @@
+:root {
+  /* Color */
+  --outlineColor: #e9ecef;
+
+  /* Size */
+  --padding1: 4px;
+  --padding2: 8px;
+  --padding3: 16px;
+
+  --bordersize: 2px;
+  --sectionHeight: 48px;
+  --gridsize: 50px;
+}
+
 .root {
   width: 100vw;
   height: 100vh;

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 import { ChromePicker } from "react-color";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +15,7 @@ export function ColorPicker() {
   return (
     <div>
       <button
-        className={styles.add}
+        className={classNames(styles.add, { [styles.open]: isOpen })}
         onClick={(e) => {
           e.stopPropagation();
           setIsOpen(true);

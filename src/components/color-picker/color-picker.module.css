@@ -18,8 +18,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #d4d4d4;
-  padding: 8px;
+  border: var(--bordersize) solid var(--outlineColor);
+  padding: var(--padding2);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 2px, rgba(0, 0, 0, 0.3) 0px 4px 8px;
 }
 
@@ -37,12 +37,16 @@
   height: 30px;
 }
 
+.open {
+  background-color: var(--outlineColor);
+}
+
 .add:before {
   content: "+";
 }
 
 .add:hover {
-  background-color: #e9ecef;
+  background-color: var(--outlineColor);
 }
 
 .addButton {
