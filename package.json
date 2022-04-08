@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
+    "@radix-ui/react-popover": "^0.1.6",
     "@reduxjs/toolkit": "^1.7.2",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^4.2.4",

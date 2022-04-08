@@ -19,6 +19,7 @@ export function Sidebar() {
       <div className={styles.top}>
         <img src={pixasso} className={styles.logo} />
       </div>
+
       <Collapse
         defaultActiveKey={["1"]}
         onChange={() => {}}
@@ -33,7 +34,7 @@ export function Sidebar() {
             </div>
           }
           key="1"
-          showArrow
+          showArrow={false}
         >
           <div className={styles.content}>
             {palette.map((c) => (

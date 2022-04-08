@@ -6,7 +6,7 @@ import {
   SET_TOOL,
 } from "../actions/pixels";
 import { Tool } from "../components/action-bar/action-bar";
-import { DEFAULT_COLORS } from "../helper/colors";
+import { sortedDefaults } from "../helper/colors";
 
 export interface PixelRootState {
   palette: string[];
@@ -16,7 +16,7 @@ export interface PixelRootState {
 }
 
 const defaultState = {
-  palette: [...DEFAULT_COLORS],
+  palette: [...sortedDefaults],
   tool: Tool.PENCIL,
   color: "#000000",
   dimension: 16,

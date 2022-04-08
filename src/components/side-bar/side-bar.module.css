@@ -1,45 +1,47 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 
+:root {
+  --outlineColor: #e9ecef;
+  --bordersize: 2px;
+  --sectionHeight: 48px;
+  --gridsize: 50px;
+  --headerPaddingTD: 8px;
+  --headerPaddingLR: 16px;
+}
+
 .root {
   width: 100%;
-  height: 100%;
-  border-right: 1px solid #d4d4d4;
+  height: 100vh;
+  border-right: var(--bordersize) solid var(--outlineColor);
   display: flex;
   flex-direction: column;
 }
 
 .top {
-  padding: 8px 16px;
-  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  height: var(--sectionHeight);
+  border-bottom: var(--bordersize) solid var(--outlineColor);
 }
 
 .logo {
-  width: 65%;
-}
-
-.placeHolder {
-  width: 50px;
-  height: 50px;
-  background-color: black;
+  margin-left: 14px;
+  width: 50%;
 }
 
 .content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-  grid-auto-rows: minmax(50px, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(var(--gridsize), 1fr));
+  grid-auto-rows: minmax(var(--gridsize), 1fr);
+  max-height: calc(100vh - var(--sectionHeight) - var(--sectionHeight));
+  overflow: auto;
 }
 
 .color {
   cursor: pointer;
   border: none;
   background: none;
+  border: 1px solid var(--outlineColor);
 }
-
-/* .color:focus {
-  border: 4px solid black;
-  border-radius: 0;
-  outline: none;
-} */
 
 .selected {
   box-sizing: border-box;
@@ -47,19 +49,19 @@
 }
 
 .header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
 
 :global(.ant-collapse-header) {
-  font-weight: bold;
-  padding: 4px 8px;
-  display: flex;
+  padding: var(--headerPaddingTD) var(--headerPaddingLR);
+  border-bottom: 2px solid var(--outlineColor);
+  background-color: white;
   align-items: center;
-}
-
-:global(.ant-collapse-header) > * {
-  margin-right: 8px;
+  font-weight: bold;
+  position: sticky;
+  display: flex;
+  top: 0;
 }
