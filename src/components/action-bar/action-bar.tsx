@@ -18,6 +18,9 @@ export enum Tool {
   CLEAR,
 }
 
+// add animation when user hovers over the other buttons
+// need to add background color
+
 function ActionBarComponent({}: Props) {
   const dispatch = useDispatch();
   const currentTool = useSelector((state: StateType) => state.pixel.tool);

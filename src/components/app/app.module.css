@@ -1,15 +1,26 @@
 :root {
   /* Color */
   --outlineColor: #e9ecef;
+  --buttonColor: #e5e5e5;
 
   /* Size */
   --padding1: 4px;
   --padding2: 8px;
   --padding3: 16px;
 
+  --spacing1: 4px;
+  --spacing2: 8px;
+  --spacing3: 16px;
+  --spacing4: 20px;
+
   --bordersize: 2px;
   --sectionHeight: 48px;
   --gridsize: 50px;
+
+  --textButtonHeight: 38px;
+
+  /* Border Radius */
+  --borderRadius: 28px;
 }
 
 .root {

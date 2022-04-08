@@ -51,16 +51,16 @@
 
 .addButton {
   border: none;
-  background-color: #e5e5e5;
+  background-color: var(--buttonColor);
   font: inherit;
   cursor: pointer;
   outline: inherit;
   width: fit-content;
-  height: 38px;
-  padding: 0 16px;
-  border-radius: 28px;
+  height: var(--textButtonHeight);
+  padding: 0 var(--padding3);
+  border-radius: var(--borderRadius);
+  margin-top: var(--spacing4);
   margin-left: auto;
-  margin-top: 20px;
   z-index: 10000;
 }
 
