@@ -15,11 +15,15 @@ export interface PixelRootState {
   dimension: number;
 }
 
+// TODO
+// - change pixel sizes
+// 16 x 16,     32 x 32,     64 x 64,        128 x 128
+
 const defaultState = {
   palette: [...sortedDefaults],
   tool: Tool.PENCIL,
   color: "#000000",
-  dimension: 16,
+  dimension: 32,
 };
 
 const pixel = (

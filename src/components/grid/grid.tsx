@@ -13,10 +13,6 @@ import {
 } from "../../helper/helper";
 import classNames from "classnames";
 
-// TODO
-// - change pixel sizes
-// 16 x 16,     32 x 32,     64 x 64,        128 x 128
-
 interface GridProps {
   canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
 }
