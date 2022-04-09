@@ -38,6 +38,11 @@ export function Grid({ canvasRef }: GridProps) {
       // ...then set the internal size to match
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
+
+      // Cavnas default background is not white
+      const ctx = canvas?.getContext("2d")!;
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
   }, [canvasRef]);
 

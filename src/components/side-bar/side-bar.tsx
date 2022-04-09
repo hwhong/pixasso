@@ -19,7 +19,6 @@ export function Sidebar() {
       <div className={styles.top}>
         <img src={pixasso} className={styles.logo} />
       </div>
-
       <Collapse
         defaultActiveKey={["1"]}
         onChange={() => {}}

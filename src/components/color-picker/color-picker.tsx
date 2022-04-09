@@ -32,13 +32,11 @@ export function ColorPicker() {
                 e.stopPropagation();
                 dispatch(setColor(hex));
                 setSelectedColor(hex);
-                console.log(1, selectedColor);
               }}
             />
             <button
               className={styles.addButton}
-              onClick={(e) => {
-                console.log(2, selectedColor);
+              onClick={() => {
                 if (selectedColor) {
                   dispatch(setColor(selectedColor));
                   dispatch(addColor(selectedColor));
