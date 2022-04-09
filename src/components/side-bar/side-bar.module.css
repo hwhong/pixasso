@@ -3,15 +3,15 @@
 .root {
   width: 100%;
   height: 100vh;
-  border-right: var(--bordersize) solid var(--outlineColor);
+  border-right: var(--size0) solid var(--outlineColor);
   display: flex;
   flex-direction: column;
 }
 
 .top {
   display: flex;
-  height: var(--sectionHeight);
-  border-bottom: var(--bordersize) solid var(--outlineColor);
+  height: var(--size11);
+  border-bottom: var(--size0) solid var(--outlineColor);
 }
 
 .logo {
@@ -23,7 +23,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--gridsize), 1fr));
   grid-auto-rows: minmax(var(--gridsize), 1fr);
-  max-height: calc(100vh - var(--sectionHeight) - var(--sectionHeight));
+  max-height: calc(100vh - var(--size11) - var(--size11));
   overflow: auto;
 }
 
@@ -47,7 +47,7 @@
 }
 
 :global(.ant-collapse-header) {
-  padding: var(--padding2) var(--padding3);
+  padding: var(--size2) var(--size3);
   border-bottom: 2px solid var(--outlineColor);
   background-color: white;
   align-items: center;

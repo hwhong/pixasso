@@ -4,16 +4,19 @@
   --buttonColor: #e5e5e5;
 
   /* Size */
-  --padding1: 4px;
-  --padding2: 8px;
-  --padding3: 16px;
+  --size0: 2px;
+  --size1: 4px;
+  --size2: 8px;
+  --size3: 16px;
+  --size4: 20px;
+  --size5: 24px;
+  --size6: 28px;
+  --size7: 32px;
+  --size8: 36px;
+  --size9: 40px;
+  --size10: 44px;
+  --size11: 48px;
 
-  --spacing1: 4px;
-  --spacing2: 8px;
-  --spacing3: 16px;
-  --spacing4: 20px;
-
-  --bordersize: 2px;
   --sectionHeight: 48px;
   --gridsize: 50px;
 

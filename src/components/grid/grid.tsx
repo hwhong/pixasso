@@ -40,6 +40,12 @@ export function Grid() {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     }
+
+    if (tool === Tool.CLEAR && canvas) {
+      const ctx = canvas?.getContext("2d");
+      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      setGrid(initializeGrid(dimension));
+    }
   }, [canvasRef]);
 
   const draw = (row: number, col: number) => {
