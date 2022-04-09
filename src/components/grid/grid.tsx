@@ -17,13 +17,16 @@ import classNames from "classnames";
 // - change pixel sizes
 // 16 x 16,     32 x 32,     64 x 64,        128 x 128
 
-export function Grid() {
+interface GridProps {
+  canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
+}
+
+export function Grid({ canvasRef }: GridProps) {
   const tool = useSelector((state: StateType) => state.pixel.tool);
   const color = useSelector((state: StateType) => state.pixel.color);
   const size = useSelector((state: StateType) => state.pixel.dimension);
   const dimension = CANVAS_SIZE / size;
 
-  const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const [isMouseDown, setIsMouseDown] = React.useState<boolean>(false);
   const [grid, setGrid] = React.useState<GridItemData[][]>(
     initializeGrid(dimension)
@@ -39,12 +42,6 @@ export function Grid() {
       // ...then set the internal size to match
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
-    }
-
-    if (tool === Tool.CLEAR && canvas) {
-      const ctx = canvas?.getContext("2d");
-      ctx?.clearRect(0, 0, canvas.width, canvas.height);
-      setGrid(initializeGrid(dimension));
     }
   }, [canvasRef]);
 
@@ -65,7 +62,7 @@ export function Grid() {
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const [row, col] = (e.target as any).textContent.split(DIVIDER);
     // !important
-    if (isMouseDown && tool !== Tool.BUCKET) {
+    if (isMouseDown && tool !== Tool.BUCKET && tool !== Tool.CLEAR) {
       draw(row, col);
 
       // default is when tool is pencil, in which case we always fill
@@ -92,7 +89,7 @@ export function Grid() {
         ...grid[row][col],
         color: gridItemColor,
       };
-    } else {
+    } else if (tool !== Tool.CLEAR) {
       // x, y => col, row
       const areas = calculateArea(
         grid,

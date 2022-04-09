@@ -4,12 +4,11 @@ import { setColor, setDimension, setTool } from "../../actions/pixels";
 import { StateType } from "../../app/store";
 import styles from "./action-bar.module.css";
 import classNames from "classnames";
+import { sortedDefaults } from "../../helper/colors";
 
-interface Props {}
-
-export const ActionBar = connect((state: StateType) => ({}))(
-  ActionBarComponent
-);
+interface ActionBarProps {
+  onClearClick: () => void;
+}
 
 export enum Tool {
   PENCIL,
@@ -21,7 +20,7 @@ export enum Tool {
 // add animation when user hovers over the other buttons
 // need to add background color
 
-function ActionBarComponent({}: Props) {
+export function ActionBar({ onClearClick }: ActionBarProps) {
   const dispatch = useDispatch();
   const currentTool = useSelector((state: StateType) => state.pixel.tool);
   const color = useSelector((state: StateType) => state.pixel.color);
@@ -36,6 +35,9 @@ function ActionBarComponent({}: Props) {
         className={getClassName(Tool.PENCIL)}
         onClick={() => {
           dispatch(setTool(Tool.PENCIL));
+          if (!color) {
+            dispatch(setColor(sortedDefaults[0]));
+          }
         }}
       >
         Pencil
@@ -62,6 +64,7 @@ function ActionBarComponent({}: Props) {
         onClick={() => {
           dispatch(setTool(Tool.CLEAR));
           dispatch(setColor(undefined));
+          onClearClick();
         }}
       >
         Clear
