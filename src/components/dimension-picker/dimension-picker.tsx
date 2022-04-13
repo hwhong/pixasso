@@ -16,13 +16,21 @@ export function DimensionPicker() {
   return (
     <div className={styles.root}>
       <Select
-        className={styles.dropdown}
         value={size.toString()}
         onChange={(event: SelectChangeEvent) => {
           const value = event.target.value;
           dispatch(setDimension(parseInt(value) as Dimension));
         }}
         inputProps={{ "aria-label": "Without label" }}
+        sx={{
+          "& .MuiOutlinedInput-input": {
+            padding: "10px 32px 10px 12px",
+          },
+          "& .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+        }}
+        style={{ borderRadius: 28, fontWeight: "bold" }}
       >
         <MenuItem value={16}>16</MenuItem>
         <MenuItem value={32}>32</MenuItem>

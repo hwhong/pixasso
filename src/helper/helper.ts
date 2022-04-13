@@ -31,7 +31,7 @@ export function calculateArea(
   grid: GridItemData[][],
   col: number,
   row: number,
-  visisted: boolean[][],
+  visited: boolean[][],
   overrideColor: string | undefined
 ): string[] {
   let unfilledArea: string[] = [];
@@ -43,17 +43,17 @@ export function calculateArea(
     row > grid.length - 1 ||
     (grid[row][col].color === undefined && overrideColor !== undefined) ||
     grid[row][col].color !== overrideColor ||
-    visisted[row][col]
+    visited[row][col]
   ) {
     return unfilledArea;
   }
 
-  visisted[row][col] = true;
+  visited[row][col] = true;
 
-  const area1 = calculateArea(grid, col + 1, row, visisted, overrideColor);
-  const area2 = calculateArea(grid, col - 1, row, visisted, overrideColor);
-  const area3 = calculateArea(grid, col, row + 1, visisted, overrideColor);
-  const area4 = calculateArea(grid, col, row - 1, visisted, overrideColor);
+  const area1 = calculateArea(grid, col + 1, row, visited, overrideColor);
+  const area2 = calculateArea(grid, col - 1, row, visited, overrideColor);
+  const area3 = calculateArea(grid, col, row + 1, visited, overrideColor);
+  const area4 = calculateArea(grid, col, row - 1, visited, overrideColor);
 
   let current: string[] = [];
   if (grid[row][col].color === overrideColor) {
