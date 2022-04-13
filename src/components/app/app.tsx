@@ -4,6 +4,7 @@ import { ActionBar } from "../action-bar/action-bar";
 import { Grid } from "../grid/grid";
 import { Sidebar } from "../side-bar/side-bar";
 import { DownloadButton } from "../download-button/download-button";
+import { DimensionPicker } from "../dimension-picker/dimension-picker";
 
 export function App() {
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
@@ -23,6 +24,7 @@ export function App() {
       <div className={styles.main}>
         <ActionBar onClearClick={onClearClick} />
         <Grid canvasRef={canvasRef} />
+        <DimensionPicker />
       </div>
       <DownloadButton canvasRef={canvasRef} />
     </div>

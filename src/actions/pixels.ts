@@ -1,4 +1,5 @@
 import { Tool } from "../components/action-bar/action-bar";
+import { Dimension } from "../helper/dimension";
 
 export const ADD_COLOR: "ADD_COLOR" = "ADD_COLOR";
 export const addColor = (hexcode: string) => ({
@@ -22,7 +23,7 @@ export const setColor = (color: string | undefined) => ({
 export type SetColorAction = ReturnType<typeof setColor>;
 
 export const SET_DIMENSION: "SET_DIMENSION" = "SET_DIMENSION";
-export const setDimension = (dimension: number) => ({
+export const setDimension = (dimension: Dimension) => ({
   type: SET_DIMENSION,
   payload: { dimension },
 });

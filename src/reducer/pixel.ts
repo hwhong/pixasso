@@ -7,19 +7,16 @@ import {
 } from "../actions/pixels";
 import { Tool } from "../components/action-bar/action-bar";
 import { sortedDefaults } from "../helper/colors";
+import { Dimension } from "../helper/dimension";
 
 export interface PixelRootState {
   palette: string[];
   tool: Tool;
   color: string | undefined;
-  dimension: number;
+  dimension: Dimension;
 }
 
-// TODO
-// - change pixel sizes
-// 16 x 16,     32 x 32,     64 x 64,        128 x 128
-
-const defaultState = {
+const defaultState: PixelRootState = {
   palette: [...sortedDefaults],
   tool: Tool.PENCIL,
   color: "#000000",
