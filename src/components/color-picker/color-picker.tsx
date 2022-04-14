@@ -18,7 +18,6 @@ export function ColorPicker() {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -62,6 +61,7 @@ export function ColorPicker() {
 
                 const userColors = localStorage.getItem(LOCAL_STORAGE_KEY);
 
+                // add to localstorage
                 let value = selectedColor;
                 if (userColors) {
                   value = `${userColors}; ${selectedColor}`;

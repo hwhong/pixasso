@@ -24,7 +24,7 @@ export function App() {
       <div className={styles.main}>
         <ActionBar onClearClick={onClearClick} />
         <Grid canvasRef={canvasRef} />
-        <DimensionPicker />
+        <DimensionPicker onClearClick={onClearClick} />
       </div>
       <DownloadButton canvasRef={canvasRef} />
     </div>
