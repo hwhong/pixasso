@@ -6,7 +6,7 @@ import { addColor, setColor } from "../../actions/pixels";
 import { StateType } from "../../app/store";
 import styles from "./color-picker.module.css";
 import Popover from "@mui/material/Popover";
-import { LOCAL_STORAGE_KEY } from "../../reducer/pixel";
+import { LOCAL_STORAGE_KEY } from "../../helper/colors";
 
 export function ColorPicker() {
   const dispatch = useDispatch();

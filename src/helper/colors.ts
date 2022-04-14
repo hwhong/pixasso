@@ -17,6 +17,8 @@ export const DEFAULT_COLORS = [
   "#efc88b",
 ];
 
+export const LOCAL_STORAGE_KEY = "USER_COLORS";
+
 interface ColorObject {
   hue: number;
   hex: string;

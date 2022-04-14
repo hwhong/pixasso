@@ -6,7 +6,7 @@ import {
   SET_TOOL,
 } from "../actions/pixels";
 import { Tool } from "../components/action-bar/action-bar";
-import { sortedDefaults } from "../helper/colors";
+import { LOCAL_STORAGE_KEY, sortedDefaults } from "../helper/colors";
 import { Dimension } from "../helper/dimension";
 
 export interface PixelRootState {
@@ -16,8 +16,6 @@ export interface PixelRootState {
   color: string | undefined;
   dimension: Dimension;
 }
-
-export const LOCAL_STORAGE_KEY = "USER_COLORS";
 
 let userColorsStr = localStorage.getItem(LOCAL_STORAGE_KEY);
 const userColors = userColorsStr?.split(";").map((c) => c.replace(/\s/g, ""));
