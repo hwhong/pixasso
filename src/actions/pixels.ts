@@ -2,9 +2,9 @@ import { Tool } from "../components/action-bar/action-bar";
 import { Dimension } from "../helper/dimension";
 
 export const ADD_COLOR: "ADD_COLOR" = "ADD_COLOR";
-export const addColor = (hexcode: string) => ({
+export const addColor = () => ({
   type: ADD_COLOR,
-  payload: { hexcode },
+  payload: {},
 });
 export type AddColorAction = ReturnType<typeof addColor>;
 

@@ -36,7 +36,7 @@ export function Sidebar() {
           showArrow={false}
         >
           <div className={styles.content}>
-            {palette.map((c) => (
+            {palette[0].concat(palette[1]).map((c) => (
               <button
                 key={c}
                 style={{ backgroundColor: c }}

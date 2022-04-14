@@ -6,6 +6,7 @@ import { addColor, setColor } from "../../actions/pixels";
 import { StateType } from "../../app/store";
 import styles from "./color-picker.module.css";
 import Popover from "@mui/material/Popover";
+import { LOCAL_STORAGE_KEY } from "../../reducer/pixel";
 
 export function ColorPicker() {
   const dispatch = useDispatch();
@@ -57,8 +58,17 @@ export function ColorPicker() {
             onClick={() => {
               if (selectedColor) {
                 dispatch(setColor(selectedColor));
-                dispatch(addColor(selectedColor));
                 setAnchorEl(null);
+
+                const userColors = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+                let value = selectedColor;
+                if (userColors) {
+                  value = `${userColors}; ${selectedColor}`;
+                }
+                localStorage.setItem(LOCAL_STORAGE_KEY, value);
+
+                dispatch(addColor());
               }
             }}
           >

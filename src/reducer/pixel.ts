@@ -10,14 +10,20 @@ import { sortedDefaults } from "../helper/colors";
 import { Dimension } from "../helper/dimension";
 
 export interface PixelRootState {
-  palette: string[];
+  // [platform defaults, user defaults]
+  palette: [string[], string[]];
   tool: Tool;
   color: string | undefined;
   dimension: Dimension;
 }
 
+export const LOCAL_STORAGE_KEY = "USER_COLORS";
+
+let userColorsStr = localStorage.getItem(LOCAL_STORAGE_KEY);
+const userColors = userColorsStr?.split(";").map((c) => c.replace(/\s/g, ""));
+
 const defaultState: PixelRootState = {
-  palette: [...sortedDefaults],
+  palette: [sortedDefaults, userColors ?? []],
   tool: Tool.PENCIL,
   color: "#000000",
   dimension: 32,
@@ -29,7 +35,21 @@ const pixel = (
 ): PixelRootState => {
   switch (action.type) {
     case ADD_COLOR: {
-      return { ...state, palette: [...state.palette, action.payload.hexcode] };
+      let merged: string[] = [];
+      if (userColors) {
+        let newUserColors = localStorage
+          .getItem(LOCAL_STORAGE_KEY)
+          ?.split(";")
+          .map((c) => c.replace(/\s/g, ""));
+
+        if (newUserColors) {
+          merged = newUserColors.concat(
+            userColors.filter((item) => newUserColors!.indexOf(item) < 0)
+          );
+        }
+      }
+
+      return { ...state, palette: [sortedDefaults, merged] };
     }
     case SET_TOOL: {
       return { ...state, tool: action.payload.tool };
