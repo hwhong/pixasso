@@ -20,7 +20,7 @@
   font-weight: bold;
 }
 
-.yesbutton {
+.yesButton {
   background-color: var(--buttonColor);
   height: var(--textButtonHeight);
   padding: 0 var(--size3);
