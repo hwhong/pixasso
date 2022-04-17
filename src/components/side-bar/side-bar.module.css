@@ -10,13 +10,13 @@
 
 .top {
   display: flex;
-  height: var(--size11);
+  height: var(--sectionHeight);
+  max-height: var(--sectionHeight);
   border-bottom: var(--size0) solid var(--outlineColor);
 }
 
 .logo {
-  margin-left: 14px;
-  width: 50%;
+  padding: var(--size2) var(--size3);
 }
 
 .content {
