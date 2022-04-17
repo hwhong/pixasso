@@ -6,10 +6,7 @@ import { Dimension } from "../../helper/dimension";
 import { useDispatch, useSelector } from "react-redux";
 import { StateType } from "../../app/store";
 import { setDimension } from "../../actions/pixels";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import classNames from "classnames";
+import { PixassoModal } from "../pixasso-modal/pixasso-modal";
 
 interface DimensionPickerProps {
   onClearClick: () => void;
@@ -20,21 +17,6 @@ export function DimensionPicker({ onClearClick }: DimensionPickerProps) {
   const size = useSelector((state: StateType) => state.pixel.dimension);
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string>("");
-  const handleClose = () => setOpen(false);
-
-  const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    display: "flex",
-    flexDirection: "column",
-    p: 4,
-  };
 
   return (
     <>
@@ -63,41 +45,20 @@ export function DimensionPicker({ onClearClick }: DimensionPickerProps) {
           <MenuItem value={128}>128</MenuItem>
         </Select>
       </div>
-      <Modal
+      <PixassoModal
         open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Are you sure?
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Changing the size of the pixel will reset the canvas.
-          </Typography>
-          <div className={styles.buttonsAction}>
-            <button
-              className={classNames(styles.button, styles.noButton)}
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              No
-            </button>
-            <button
-              className={classNames(styles.button, styles.yesButton)}
-              onClick={() => {
-                dispatch(setDimension(parseInt(value) as Dimension));
-                onClearClick();
-                setOpen(false);
-              }}
-            >
-              Yes
-            </button>
-          </div>
-        </Box>
-      </Modal>
+        title="Are you sure?"
+        description="Changing the size of the pixel will reset the canvas."
+        setOpen={setOpen}
+        onNoClick={() => {
+          setOpen(false);
+        }}
+        onYesClick={() => {
+          dispatch(setDimension(parseInt(value) as Dimension));
+          onClearClick();
+          setOpen(false);
+        }}
+      />
     </>
   );
 }

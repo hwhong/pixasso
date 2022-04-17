@@ -5,35 +5,3 @@
   box-shadow: var(--boxShadow);
   border-radius: var(--borderRadius);
 }
-
-.buttonsAction {
-  margin-left: auto;
-}
-
-.button {
-  border: none;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  width: fit-content;
-  margin-left: auto;
-  font-weight: bold;
-}
-
-.yesButton {
-  background-color: var(--buttonColor);
-  height: var(--textButtonHeight);
-  padding: 0 var(--size3);
-  border-radius: var(--borderRadius);
-  margin-top: var(--size4);
-}
-
-.noButton {
-  background-color: white;
-  border: 2px solid var(--buttonColor);
-  height: var(--textButtonHeight);
-  padding: 0 var(--size3);
-  border-radius: var(--borderRadius);
-  margin-top: var(--size4);
-  margin-right: var(--size2);
-}

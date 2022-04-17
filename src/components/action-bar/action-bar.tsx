@@ -1,10 +1,11 @@
 import React from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { setColor, setDimension, setTool } from "../../actions/pixels";
+import { useDispatch, useSelector } from "react-redux";
+import { setColor, setTool } from "../../actions/pixels";
 import { StateType } from "../../app/store";
 import styles from "./action-bar.module.css";
 import classNames from "classnames";
 import { sortedDefaults } from "../../helper/colors";
+import { PixassoModal } from "../pixasso-modal/pixasso-modal";
 
 interface ActionBarProps {
   onClearClick: () => void;
@@ -22,9 +23,9 @@ export enum Tool {
 
 export function ActionBar({ onClearClick }: ActionBarProps) {
   const dispatch = useDispatch();
+  const [open, setOpen] = React.useState(false);
   const currentTool = useSelector((state: StateType) => state.pixel.tool);
   const color = useSelector((state: StateType) => state.pixel.color);
-  const size = useSelector((state: StateType) => state.pixel.dimension);
 
   const getClassName = (tool: Tool) =>
     classNames(styles.button, { [styles.active]: tool === currentTool });
@@ -64,11 +65,28 @@ export function ActionBar({ onClearClick }: ActionBarProps) {
         onClick={() => {
           dispatch(setTool(Tool.CLEAR));
           dispatch(setColor(undefined));
-          onClearClick();
+          setOpen(true);
         }}
       >
         Clear
       </button>
+      <PixassoModal
+        open={open}
+        title="Are you sure?"
+        description="This action will reset the canvas."
+        setOpen={setOpen}
+        onNoClick={() => {
+          setOpen(false);
+        }}
+        onYesClick={() => {
+          onClearClick();
+          setOpen(false);
+          dispatch(setTool(Tool.PENCIL));
+          if (!color) {
+            dispatch(setColor(sortedDefaults[0]));
+          }
+        }}
+      />
     </div>
   );
 }
