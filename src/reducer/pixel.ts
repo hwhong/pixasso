@@ -34,17 +34,16 @@ const pixel = (
   switch (action.type) {
     case ADD_COLOR: {
       let merged: string[] = [];
-      if (userColors) {
-        let newUserColors = localStorage
-          .getItem(LOCAL_STORAGE_KEY)
-          ?.split(";")
-          .map((c) => c.replace(/\s/g, ""));
 
-        if (newUserColors) {
-          merged = newUserColors.concat(
-            userColors.filter((item) => newUserColors!.indexOf(item) < 0)
-          );
-        }
+      let newUserColors = localStorage
+        .getItem(LOCAL_STORAGE_KEY)
+        ?.split(";")
+        .map((c) => c.replace(/\s/g, ""));
+
+      if (newUserColors) {
+        merged = newUserColors.concat(
+          (userColors ?? []).filter((item) => newUserColors!.indexOf(item) < 0)
+        );
       }
 
       return { ...state, palette: [sortedDefaults, merged] };
