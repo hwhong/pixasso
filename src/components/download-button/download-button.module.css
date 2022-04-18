@@ -13,3 +13,29 @@
   top: var(--size4);
   right: var(--size4);
 }
+
+.input {
+  margin-top: var(--size5);
+}
+
+.buttonsAction {
+  margin-left: auto;
+}
+
+.button {
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  width: fit-content;
+  margin-left: auto;
+  font-weight: bold;
+}
+
+.yesButton {
+  background-color: var(--buttonColor);
+  height: var(--textButtonHeight);
+  padding: 0 var(--size3);
+  border-radius: var(--borderRadius);
+  margin-top: var(--size4);
+}
