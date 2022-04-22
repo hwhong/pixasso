@@ -47,6 +47,21 @@
   height: 30px;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--size2);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.wrapper:hover {
+  background-color: #f0f0f0;
+}
+
 :global(.ant-collapse-header) {
   padding: var(--size2) var(--size3);
   border-bottom: 2px solid var(--outlineColor);

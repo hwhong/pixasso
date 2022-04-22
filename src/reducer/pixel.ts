@@ -1,5 +1,6 @@
 import {
   ADD_COLOR,
+  DELETE_COLOR,
   PixelsAction,
   SET_COLOR,
   SET_DIMENSION,
@@ -39,6 +40,18 @@ const pixel = (
         .map((c) => c.replace(/\s/g, ""));
 
       return { ...state, palette: [sortedDefaults, newUserColors ?? []] };
+    }
+    case DELETE_COLOR: {
+      let colors = localStorage
+        .getItem(LOCAL_STORAGE_KEY)
+        ?.split(";")
+        .map((c) => c.replace(/\s/g, ""));
+
+      const newColors = colors?.filter((c) => c !== action.payload.color);
+
+      localStorage.setItem(LOCAL_STORAGE_KEY, newColors?.join(";")!);
+
+      return { ...state, palette: [sortedDefaults, newColors!] };
     }
     case SET_TOOL: {
       return { ...state, tool: action.payload.tool };

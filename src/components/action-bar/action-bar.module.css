@@ -23,8 +23,17 @@
   margin: 0 4px;
 }
 
+.button:hover {
+  background-color: #f0f0f0;
+  border-radius: 28px;
+}
+
 .active {
   background-color: black;
   color: white;
   border-radius: 28px;
+}
+
+.active:hover {
+  background-color: black;
 }

@@ -8,6 +8,13 @@ export const addColor = () => ({
 });
 export type AddColorAction = ReturnType<typeof addColor>;
 
+export const DELETE_COLOR: "DELETE_COLOR" = "DELETE_COLOR";
+export const deleteColor = (color: string) => ({
+  type: DELETE_COLOR,
+  payload: { color },
+});
+export type DeleteColorAction = ReturnType<typeof deleteColor>;
+
 export const SET_TOOL: "SET_TOOL" = "SET_TOOL";
 export const setTool = (tool: Tool) => ({
   type: SET_TOOL,
@@ -31,6 +38,7 @@ export type SetDimensionAction = ReturnType<typeof setDimension>;
 
 export type PixelsAction =
   | AddColorAction
+  | DeleteColorAction
   | SetToolAction
   | SetColorAction
   | SetDimensionAction;
