@@ -30,3 +30,8 @@ export function App() {
     </div>
   );
 }
+
+// LAUNCH TODO
+// able to delete colors
+// able to submit suggestions
+// link socials?

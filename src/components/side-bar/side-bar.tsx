@@ -28,7 +28,29 @@ export function Sidebar() {
         <Panel
           header={
             <div className={styles.header}>
-              <span>Palette</span>
+              <span>Default Palette</span>
+            </div>
+          }
+          key="1"
+          showArrow={false}
+        >
+          <div className={styles.content}>
+            {palette[0].map((c) => (
+              <button
+                key={c}
+                style={{ backgroundColor: c }}
+                onClick={() => dispatch(setColor(c))}
+                className={classNames(styles.color, {
+                  [styles.selected]: c === color,
+                })}
+              />
+            ))}
+          </div>
+        </Panel>
+        <Panel
+          header={
+            <div className={styles.header}>
+              <span>Custom Palette</span>
               <ColorPicker />
             </div>
           }
@@ -36,7 +58,7 @@ export function Sidebar() {
           showArrow={false}
         >
           <div className={styles.content}>
-            {palette[0].concat(palette[1]).map((c) => (
+            {palette[1].map((c) => (
               <button
                 key={c}
                 style={{ backgroundColor: c }}

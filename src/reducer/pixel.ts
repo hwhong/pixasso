@@ -33,20 +33,12 @@ const pixel = (
 ): PixelRootState => {
   switch (action.type) {
     case ADD_COLOR: {
-      let merged: string[] = [];
-
       let newUserColors = localStorage
         .getItem(LOCAL_STORAGE_KEY)
         ?.split(";")
         .map((c) => c.replace(/\s/g, ""));
 
-      if (newUserColors) {
-        merged = newUserColors.concat(
-          (userColors ?? []).filter((item) => newUserColors!.indexOf(item) < 0)
-        );
-      }
-
-      return { ...state, palette: [sortedDefaults, merged] };
+      return { ...state, palette: [sortedDefaults, newUserColors ?? []] };
     }
     case SET_TOOL: {
       return { ...state, tool: action.payload.tool };
