@@ -10,13 +10,13 @@
 
 .top {
   display: flex;
-  height: var(--sectionHeight);
+  padding: 10px var(--size3);
   max-height: var(--sectionHeight);
   border-bottom: var(--size0) solid var(--outlineColor);
 }
 
 .logo {
-  padding: var(--size2) var(--size3);
+  width: 80%;
 }
 
 .content {
@@ -60,6 +60,10 @@
 
 .wrapper:hover {
   background-color: #f0f0f0;
+}
+
+.panel {
+  border-top: 1px solid var(--outlineColor);
 }
 
 :global(.ant-collapse-header) {

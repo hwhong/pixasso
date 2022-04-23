@@ -57,11 +57,14 @@ export function Sidebar() {
           }
           key="1"
           showArrow={false}
+          className={styles.panel}
         >
           <div className={styles.content}>
-            {palette[1].map((c) => (
-              <CustomColor color={c} key={c} />
-            ))}
+            {palette[1]
+              .filter((c) => !!c)
+              .map((c) => (
+                <CustomColor color={c} key={c} />
+              ))}
           </div>
         </Panel>
       </Collapse>
