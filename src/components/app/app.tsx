@@ -31,7 +31,7 @@ export function App() {
   );
 }
 
-// LAUNCH TODO
-// able to delete colors
+// [LAUNCH TODO]
 // able to submit suggestions
 // link socials?
+// resize weirdness
