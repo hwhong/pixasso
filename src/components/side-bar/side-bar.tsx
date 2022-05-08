@@ -25,6 +25,7 @@ export function Sidebar() {
         onChange={() => {}}
         expandIconPosition="right"
         collapsible="disabled"
+        className={styles.collapse}
       >
         <Panel
           header={
@@ -42,7 +43,8 @@ export function Sidebar() {
                 style={{ backgroundColor: c }}
                 onClick={() => dispatch(setColor(c))}
                 className={classNames(styles.color, {
-                  [styles.selected]: c === color,
+                  [styles.selected]: c === color && c !== "#FFFFFF",
+                  [styles.white]: c === color && c === "#FFFFFF",
                 })}
               />
             ))}
