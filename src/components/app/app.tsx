@@ -35,3 +35,5 @@ export function App() {
 // able to submit suggestions
 // link socials?
 // overflow not working as expected
+// more bug on the platform
+// alert() if page refreshes

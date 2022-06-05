@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./side-bar.module.css";
 import { Collapse } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { setColor } from "../../actions/pixels";
+import { setColor, setTool } from "../../actions/pixels";
 import classNames from "classnames";
 import { StateType } from "../../app/store";
 import pixasso from "../../image/pixasso.svg";
 import { ColorPicker } from "../color-picker/color-picker";
 import { CustomColor } from "../custom-color/custom-color";
+import { Tool } from "../action-bar/action-bar";
 
 export function Sidebar() {
   const dispatch = useDispatch();
@@ -41,7 +42,10 @@ export function Sidebar() {
               <button
                 key={c}
                 style={{ backgroundColor: c }}
-                onClick={() => dispatch(setColor(c))}
+                onClick={() => {
+                  dispatch(setTool(Tool.PENCIL));
+                  dispatch(setColor(c));
+                }}
                 className={classNames(styles.color, {
                   [styles.selected]: c === color && c !== "#FFFFFF",
                   [styles.white]: c === color && c === "#FFFFFF",

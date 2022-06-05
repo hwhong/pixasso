@@ -1,10 +1,11 @@
 import classNames from "classnames";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteColor, setColor } from "../../actions/pixels";
+import { deleteColor, setColor, setTool } from "../../actions/pixels";
 import { StateType } from "../../app/store";
 import styles from "./custom-color.module.css";
 import Popover from "@mui/material/Popover";
+import { Tool } from "../action-bar/action-bar";
 
 interface CustomColorProps {
   color: string;
@@ -29,7 +30,10 @@ export function CustomColor({ color }: CustomColorProps) {
         key={color}
         aria-describedby={id}
         style={{ backgroundColor: color }}
-        onClick={() => dispatch(setColor(color))}
+        onClick={() => {
+          dispatch(setTool(Tool.PENCIL));
+          dispatch(setColor(color));
+        }}
         className={classNames(styles.color, {
           [styles.selected]: color === selectedColor,
         })}
