@@ -36,4 +36,5 @@ export function App() {
 // link socials?
 // overflow not working as expected
 // more bug on the platform
+// clear and do bucket again
 // alert() if page refreshes
