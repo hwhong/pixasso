@@ -29,6 +29,12 @@ export function Grid({ canvasRef }: GridProps) {
   );
 
   React.useEffect(() => {
+    if (tool === Tool.CLEAR) {
+      setGrid(initializeGrid(dimension));
+    }
+  });
+
+  React.useEffect(() => {
     setGrid(initializeGrid(dimension));
   }, [dimension]);
 

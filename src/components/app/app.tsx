@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./app.module.css";
 import { ActionBar } from "../action-bar/action-bar";
 import { Grid } from "../grid/grid";
@@ -15,6 +15,16 @@ export function App() {
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
     }
   };
+
+  useEffect(() => {
+    window.onbeforeunload = function () {
+      return true;
+    };
+
+    return () => {
+      window.onbeforeunload = null;
+    };
+  }, []);
 
   return (
     <div className={styles.root}>

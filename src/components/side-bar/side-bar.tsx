@@ -13,6 +13,7 @@ import { Tool } from "../action-bar/action-bar";
 export function Sidebar() {
   const dispatch = useDispatch();
   const color = useSelector((state: StateType) => state.pixel.color);
+  const tool = useSelector((state: StateType) => state.pixel.tool);
   const palette = useSelector((state: StateType) => state.pixel.palette);
   const { Panel } = Collapse;
 
@@ -43,7 +44,12 @@ export function Sidebar() {
                 key={c}
                 style={{ backgroundColor: c }}
                 onClick={() => {
-                  dispatch(setTool(Tool.PENCIL));
+                  // only sets the tool to be pencil if the user was using
+                  // the earser before
+                  if (tool === Tool.ERASER) {
+                    dispatch(setTool(Tool.PENCIL));
+                  }
+
                   dispatch(setColor(c));
                 }}
                 className={classNames(styles.color, {
