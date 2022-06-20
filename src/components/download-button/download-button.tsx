@@ -34,7 +34,7 @@ export function DownloadButton({ canvasRef }: DownloadButtonProps) {
       >
         <Box sx={modalStyle}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Enter the name of the image file
+            Enter the image name
           </Typography>
           <OutlinedInput
             className={styles.input}
@@ -54,6 +54,7 @@ export function DownloadButton({ canvasRef }: DownloadButtonProps) {
                   link.href = canvas.toDataURL();
                   link.click();
                 }
+                setFilename("");
                 setOpen(false);
               }}
             >

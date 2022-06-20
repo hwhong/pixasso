@@ -44,7 +44,4 @@ export function App() {
 // [LAUNCH TODO]
 // able to submit suggestions
 // link socials?
-// overflow not working as expected
 // more bug on the platform
-// clear and do bucket again
-// alert() if page refreshes
