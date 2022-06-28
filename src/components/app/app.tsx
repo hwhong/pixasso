@@ -7,7 +7,7 @@ import { DownloadButton } from "../download-button/download-button";
 import { DimensionPicker } from "../dimension-picker/dimension-picker";
 import ReactGA from "react-ga";
 
-const TRACKING_ID = "G-5J0KZ2DVPS";
+const TRACKING_ID = "UA-233063047-1";
 
 export function App() {
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
