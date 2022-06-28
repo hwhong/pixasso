@@ -5,6 +5,9 @@ import { Grid } from "../grid/grid";
 import { Sidebar } from "../side-bar/side-bar";
 import { DownloadButton } from "../download-button/download-button";
 import { DimensionPicker } from "../dimension-picker/dimension-picker";
+import ReactGA from "react-ga";
+
+const TRACKING_ID = "G-5J0KZ2DVPS";
 
 export function App() {
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
@@ -15,6 +18,15 @@ export function App() {
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
     }
   };
+
+  const setAnalytics = () => {
+    ReactGA.initialize(TRACKING_ID);
+    ReactGA.pageview("page-viewed");
+  };
+
+  useEffect(() => {
+    setAnalytics();
+  }, []);
 
   useEffect(() => {
     window.onbeforeunload = function () {
