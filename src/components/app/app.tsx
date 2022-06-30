@@ -6,10 +6,12 @@ import { Sidebar } from "../side-bar/side-bar";
 import { DownloadButton } from "../download-button/download-button";
 import { DimensionPicker } from "../dimension-picker/dimension-picker";
 import ReactGA from "react-ga";
+import { MobilePage } from "../mobile-page/mobile-page";
 
 const TRACKING_ID = "UA-233063047-1";
 
 export function App() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const onClearClick = () => {
     const canvas = canvasRef.current;
@@ -38,7 +40,9 @@ export function App() {
     };
   }, []);
 
-  return (
+  return isMobile ? (
+    <MobilePage />
+  ) : (
     <div className={styles.root}>
       <div>
         <Sidebar />
